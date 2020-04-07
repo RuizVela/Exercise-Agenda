@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Agenda_con_Archivos
 {
     public class Consultor
     {
-        public static List<string> BuscarNombre(string nombre)
+        public static List<string> BuscarContacto(string nombre)
         {
             List<string> lista = new List<string>();
             using (StreamReader reader = new StreamReader("Agenda.txt"))
@@ -27,11 +25,13 @@ namespace Agenda_con_Archivos
         public static void LeerLista(List<string> lista)
         {
             int tecla = 1;
+            Console.WriteLine("Escoga su contacto ");
             foreach (string linea in lista)
             {
                 Console.WriteLine("\t"+tecla +" - " + linea);
                 tecla++;
             }
+            Console.WriteLine("\t0 - Salir");
         }
     }
 }

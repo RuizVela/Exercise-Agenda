@@ -6,14 +6,14 @@ namespace Agenda_con_Archivos
     {
         private DateTime _fecha;
         private string _descripcion;
-        private string _nombre;
+        private string _contacto;
 
         public void addCita()
         {
             InsertarFecha();
             InsertarDescripcion();
-            InsertarNombre();
-            var lista = Consultor.BuscarNombre(_nombre);
+            InsertarContacto();
+            var lista = Consultor.BuscarContacto(_contacto);
             Consultor.LeerLista(lista);
             Console.ReadLine();
         }
@@ -34,10 +34,10 @@ namespace Agenda_con_Archivos
             Console.WriteLine("Inserte el motivo de la cita");
             _descripcion = Console.ReadLine();
         }
-        private void  InsertarNombre()
+        private void  InsertarContacto()
         {
             Console.WriteLine("Inserte el nombre de su contacto");
-            _nombre = Console.ReadLine();
+            _contacto = Console.ReadLine();
         }
     }
 }
