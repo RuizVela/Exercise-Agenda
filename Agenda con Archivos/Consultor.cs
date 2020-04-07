@@ -9,7 +9,7 @@ namespace Agenda_con_Archivos
         public static List<string> BuscarContacto(string nombre)
         {
             List<string> lista = new List<string>();
-            using (StreamReader reader = new StreamReader("Agenda.txt"))
+            using (StreamReader reader = new StreamReader("Contactos.txt"))
             {
                 while (reader.Peek() >= 0)
                 {

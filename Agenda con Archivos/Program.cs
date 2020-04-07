@@ -19,7 +19,8 @@ namespace Agenda_con_Archivos
                     cita.AddCita();
                     break;
                 case "2":
-                    //
+                    var contacto = new Contacto();
+                    contacto.AddContacto();
                     break;
                 case "3":
                     //

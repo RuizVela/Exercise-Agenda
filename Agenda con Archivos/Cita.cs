@@ -8,7 +8,7 @@ namespace Agenda_con_Archivos
         private DateTime _fecha;
         private string _descripcion;
         private string _contacto;
-        readonly string path = "Agenda.txt";
+        private const string path = "Agenda.txt";
 
         public void AddCita()
         {
@@ -45,13 +45,13 @@ namespace Agenda_con_Archivos
             {
                 CreateFile();
             }
-            InsertarCita();
+            RegistrarCita();
         }
         private void CreateFile()
         {
            File.CreateText(path).Close();
         }
-        private void InsertarCita()
+        private void RegistrarCita()
         {
             var linea = _fecha.ToString() + " " + _descripcion + " " + _contacto;
             File.AppendAllText(path, linea + Environment.NewLine);
