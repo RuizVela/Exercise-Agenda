@@ -54,7 +54,13 @@ namespace Agenda_con_Archivos
         private void RegistrarCita()
         {
             var linea = _fecha.ToString() + " " + _descripcion + " " + _contacto;
-            File.AppendAllText(path, linea + Environment.NewLine);
+            Console.WriteLine("¿Es correcta esta informacion?");
+            Console.WriteLine(linea);
+            Console.WriteLine("s/n");
+            if (Console.ReadLine() == "s")
+            {
+                File.AppendAllText(path, linea + Environment.NewLine);
+            }
         }
     }
 }
