@@ -63,7 +63,8 @@ namespace Agenda_con_Archivos
             Console.WriteLine("s/n");
             if(Console.ReadLine() == "s")
             {
-            File.AppendAllText(path, linea + Environment.NewLine);
+                var id = File.ReadLines(path).Count();
+            File.AppendAllText(path,id+" "+ linea + Environment.NewLine);
             }
         }
     }
