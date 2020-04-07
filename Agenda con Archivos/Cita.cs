@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos
 {
     public class Cita
     {
-        private readonly DateTime _fecha;
+        private DateTime _fecha;
         private readonly string _descripcion;
         private readonly string _nombre;
-        public Cita(DateTime fecha, string descripcion, string nombre)
+
+        public void addCita()
         {
-            _fecha = fecha;
-            _descripcion = descripcion;
-            _nombre = nombre;
+            InsertarFecha();
+        }
+        private void InsertarFecha()
+        {
+            Console.WriteLine("Inserte fecha de la cita siguiendo el ejemplo:");
+            Console.WriteLine("31/12/2020");
+            var fecha = Console.ReadLine();
+            Console.WriteLine("Inserte fecha de la cita siguiendo el ejemplo:");
+            Console.WriteLine("17:30");
+            var hora = Console.ReadLine();
+            var fechaCompleta = fecha +" "+ hora;
+            var data = Convert.ToDateTime(fechaCompleta);
+            _fecha = data;
         }
     }
 }

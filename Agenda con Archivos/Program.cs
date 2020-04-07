@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos
 {
@@ -19,7 +15,8 @@ namespace Agenda_con_Archivos
             switch(Console.ReadLine())
             {
                 case "1":
-                    //
+                    var cita = new Cita();
+                    cita.addCita();
                     break;
                 case "2":
                     //
