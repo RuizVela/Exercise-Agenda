@@ -49,8 +49,7 @@ namespace Agenda_con_Archivos
         }
         private void CreateFile()
         {
-            var archivo = File.CreateText(path);
-            archivo.Close();
+           File.CreateText(path).Close();
         }
         private void InsertarCita()
         {
