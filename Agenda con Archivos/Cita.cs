@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Agenda_con_Archivos
@@ -15,6 +16,7 @@ namespace Agenda_con_Archivos
             InsertarFecha();
             InsertarDescripcion();
             InsertarContacto();
+            Consultor.BuscarContacto(_contacto);
             GuardarCita();
         }
         private void InsertarFecha()

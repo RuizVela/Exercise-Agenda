@@ -6,9 +6,12 @@ namespace Agenda_con_Archivos
 {
     public class Consultor
     {
-        public static List<string> BuscarContacto(string nombre)
+        public static void BuscarContacto(string nombre)
         {
             List<string> lista = new List<string>();
+            try
+            {
+
             using (StreamReader reader = new StreamReader("Contactos.txt"))
             {
                 while (reader.Peek() >= 0)
@@ -20,16 +23,23 @@ namespace Agenda_con_Archivos
                     }
                 }
             }
-            return lista;
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine("No existen contactos.");
+                throw;
+            }
+            if (lista.Count >0)
+            {
+            LeerLista(lista);
+            }
         }
         public static void LeerLista(List<string> lista)
         {
-            int tecla = 1;
             Console.WriteLine("Escoga su contacto ");
             foreach (string linea in lista)
             {
-                Console.WriteLine("\t"+tecla +" - " + linea);
-                tecla++;
+                Console.WriteLine("\t"+ linea);
             }
             Console.WriteLine("\t0 - Salir");
         }
