@@ -5,12 +5,14 @@ namespace Agenda_con_Archivos
     public class Cita
     {
         private DateTime _fecha;
-        private readonly string _descripcion;
-        private readonly string _nombre;
+        private string _descripcion;
+        private string _nombre;
 
         public void addCita()
         {
             InsertarFecha();
+            InsertarDescripcion();
+            InsertarNombre();
         }
         private void InsertarFecha()
         {
@@ -23,6 +25,17 @@ namespace Agenda_con_Archivos
             var fechaCompleta = fecha +" "+ hora;
             var data = Convert.ToDateTime(fechaCompleta);
             _fecha = data;
+        }
+        private void InsertarDescripcion()
+        {
+            Console.WriteLine("Inserte el motivo de la cita");
+            _descripcion = Console.ReadLine();
+        }
+        private string  InsertarNombre()
+        {
+            Console.WriteLine("Inserte el nombre de su contacto");
+            _nombre = Console.ReadLine();
+            return _nombre;
         }
     }
 }
