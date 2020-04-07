@@ -16,7 +16,7 @@ namespace Agenda_con_Archivos
             {
                 case "1":
                     var cita = new Cita();
-                    cita.addCita();
+                    cita.AddCita();
                     break;
                 case "2":
                     //

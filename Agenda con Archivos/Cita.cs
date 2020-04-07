@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Agenda_con_Archivos
 {
@@ -7,15 +8,14 @@ namespace Agenda_con_Archivos
         private DateTime _fecha;
         private string _descripcion;
         private string _contacto;
+        readonly string path = "Agenda.txt";
 
-        public void addCita()
+        public void AddCita()
         {
             InsertarFecha();
             InsertarDescripcion();
             InsertarContacto();
-            var lista = Consultor.BuscarContacto(_contacto);
-            Consultor.LeerLista(lista);
-            Console.ReadLine();
+            GuardarCita();
         }
         private void InsertarFecha()
         {
@@ -38,6 +38,24 @@ namespace Agenda_con_Archivos
         {
             Console.WriteLine("Inserte el nombre de su contacto");
             _contacto = Console.ReadLine();
+        }
+        private void GuardarCita()
+        {
+            if (!File.Exists(path)) 
+            {
+                CreateFile();
+            }
+            InsertarCita();
+        }
+        private void CreateFile()
+        {
+            var archivo = File.CreateText(path);
+            archivo.Close();
+        }
+        private void InsertarCita()
+        {
+            var linea = _fecha.ToString() + " " + _descripcion + " " + _contacto;
+            File.AppendAllText(path, linea + Environment.NewLine);
         }
     }
 }
