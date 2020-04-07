@@ -13,6 +13,9 @@ namespace Agenda_con_Archivos
             InsertarFecha();
             InsertarDescripcion();
             InsertarNombre();
+            var lista = Consultor.BuscarNombre(_nombre);
+            Consultor.LeerLista(lista);
+            Console.ReadLine();
         }
         private void InsertarFecha()
         {
@@ -31,11 +34,10 @@ namespace Agenda_con_Archivos
             Console.WriteLine("Inserte el motivo de la cita");
             _descripcion = Console.ReadLine();
         }
-        private string  InsertarNombre()
+        private void  InsertarNombre()
         {
             Console.WriteLine("Inserte el nombre de su contacto");
             _nombre = Console.ReadLine();
-            return _nombre;
         }
     }
 }
