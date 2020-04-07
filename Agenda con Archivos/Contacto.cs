@@ -58,7 +58,13 @@ namespace Agenda_con_Archivos
         private void RegistrarContacto()
         {
             var linea = _nombre + " " + _apellidos + " " + _telefono + " " + _localidad;
+            Console.WriteLine("¿Es correcta esta informacion?");
+            Console.WriteLine(linea);
+            Console.WriteLine("s/n");
+            if(Console.ReadLine() == "s")
+            {
             File.AppendAllText(path, linea + Environment.NewLine);
+            }
         }
     }
 }
