@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Agenda_con_Archivos.Implementations;
+using Agenda_con_Archivos.Models;
+using System;
 
 namespace Agenda_con_Archivos
 {
@@ -15,12 +17,11 @@ namespace Agenda_con_Archivos
             switch(Console.ReadLine())
             {
                 case "1":
-                    var cita = new Cita();
-                    cita.AddCita();
+                    //
                     break;
                 case "2":
-                    var contacto = new Contacto();
-                    contacto.AddContacto();
+                    var contact = new Recorder(new Contact());
+                    contact.Registrar();
                     break;
                 case "3":
                     //
