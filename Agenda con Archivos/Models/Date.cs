@@ -1,4 +1,5 @@
-﻿using Agenda_con_Archivos.Services;
+﻿using Agenda_con_Archivos.Implementations;
+using Agenda_con_Archivos.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,18 +79,35 @@ namespace Agenda_con_Archivos.Models
         }
         private void chooseContact(List<string> contacts)
         {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine("No existen contactos con ese nombre, ingrese su contacto:");
+                var Contact = new Contact();
+                Contact.Registrar();
+                searchContact(Contact.name);
+                return;
+            }
             Console.WriteLine("Elige tu contacto");
             foreach (string contact in contacts)
             {
                 Console.WriteLine(contact);
             }
+            Console.WriteLine("0 Mi contacto no está en la lista");
             string chosen = Console.ReadLine();
             foreach (string contact in contacts)
             {
                 if (chosen == contact[0].ToString())
                 {
                     nameContact = contact.Remove(0,1);
+                    return;
                 }
+            }
+            if (chosen == "0")
+            {
+                Console.WriteLine("Ingrese su contacto:");
+                var Contact = new Contact();
+                Contact.Registrar();
+                searchContact(Contact.name);
             }
         }
         private bool Confirm()
