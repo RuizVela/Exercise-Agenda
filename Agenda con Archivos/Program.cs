@@ -35,6 +35,10 @@ namespace Agenda_con_Archivos
                 case "0":
                     //
                     break;
+               default:
+                    Console.WriteLine("Por favor ingrese un numero de la lista");
+                    Main();
+                    break;
             }
         }
     }
