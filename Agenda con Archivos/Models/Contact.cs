@@ -11,7 +11,7 @@ namespace Agenda_con_Archivos.Models
     public class Contact : IRecorder
     {
         private readonly string path = "Contactos.txt";
-        private string name;
+        public string name { get; private set; }
         private string surname;
         private int phoneNumber;
         bool correctPhoneNumber = false;
