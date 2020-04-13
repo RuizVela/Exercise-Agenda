@@ -4,7 +4,7 @@ using System;
 
 namespace Agenda_con_Archivos
 {
-    class Program
+    static class Program
     {
         private static void Main()
         {
