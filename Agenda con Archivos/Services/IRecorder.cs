@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos.Services
 {
-    public interface IService
+    public interface IRecorder
     {
         void Registrar();
     }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos.Implementations
 {
-    public class Recorder
+    public class Searcher
     {
-        protected IRecorder _service;
-        public Recorder(IRecorder service)
+        protected ISearcher _service;
+        public Searcher(ISearcher service)
         {
             _service = service;
         }
-        public void Registrar()
+        public void Search()
         {
-            _service.Registrar();
+            _service.Search();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos.Models
 {
-    public class Contact : IService
+    public class Contact : IRecorder
     {
         private readonly string path = "Contactos.txt";
         public void Registrar()

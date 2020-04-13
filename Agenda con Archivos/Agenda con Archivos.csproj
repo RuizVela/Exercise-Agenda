@@ -44,11 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\Recorder.cs" />
+    <Compile Include="Implementations\Searcher.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactSearcher.cs" />
     <Compile Include="Models\Date.cs" />
+    <Compile Include="Models\DateSearcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\IRecorder.cs" />
+    <Compile Include="Services\ISearcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

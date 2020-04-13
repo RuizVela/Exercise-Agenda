@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Agenda_con_Archivos.Models
 {
-    public class Date : IService
+    public class Date : IRecorder
     {
         private readonly string path = "Agenda.txt";
         public void Registrar()
