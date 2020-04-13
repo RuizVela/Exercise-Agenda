@@ -11,64 +11,90 @@ namespace Agenda_con_Archivos.Models
     public class Date : IRecorder
     {
         private readonly string path = "Agenda.txt";
+        private DateTime date;
+        bool correctDate = false;
+        private string description;
+        private string nameContact;
+        private string data;
         public void Registrar()
         {
-            var data = Insertar();
-            var confirmedData = Confirm(data);
+            Insertar();
+            if(!Confirm())
+            {
+                return;
+            }
             if (!File.Exists(path))
             {
                 CreateFile();
             }
-            AddRegistry(confirmedData);
+            AddRegistry(data);
             Console.WriteLine("Cita creada correctamente");
             Console.ReadLine();
         }
-        private string Insertar()
+        private void Insertar()
         {
-            List<string> dataList = new List<string>();
-            Console.WriteLine("Inserte la fecha de la cita. Ejemplo: 21/05/2001");
-            dataList.Add(Console.ReadLine());
-            Console.WriteLine("Inserte el motivo de la cita:");
-            dataList.Add(Console.ReadLine());
-            Console.WriteLine("Inserte el nombre de su contacto:");
-            dataList.Add(searchContact(Console.ReadLine()));
-            string data = string.Join(" ", dataList);
-            return data;
+            InsertDate();
+            InsertDescription();
+            InsertContact();
         }
-        private string searchContact(string name)
+        private void InsertDate()
         {
-            var contacts = File.ReadAllLines("Contactos.txt");
-            List<string> names = new List<string>();
+            while (!correctDate)
+            {
+                Console.WriteLine("Inserte la fecha de la cita. Ejemplo: 21/05/2001");
+                correctDate = DateTime.TryParse(Console.ReadLine(), out date)   ;
+            }
+        }
+        private void InsertDescription()
+        {
+            while(string.IsNullOrEmpty(description))
+            {
+                Console.WriteLine("Inserte el motivo de la cita:");
+                description = Console.ReadLine();
+            }
+        }
+        private void InsertContact()
+        {
+            while(string.IsNullOrEmpty(nameContact))
+            {
+                Console.WriteLine("Inserte el nombre de su contacto:");
+                searchContact(Console.ReadLine());
+            }
+        }
+        private void searchContact(string name)
+        {
+            var allContacts = File.ReadAllLines("Contactos.txt");
+            List<string> similarContacts = new List<string>();
             int count = 0;
-            foreach(string contact in contacts)
+            foreach(string contact in allContacts)
             {
                 if (contact.Contains(name))
                 {
                     count++;
-                    names.Add(count.ToString()+" "+contact);
+                    similarContacts.Add(count.ToString()+" "+contact);
                 }
             }
-            return chooseContact(names);
+            chooseContact(similarContacts);
         }
-        private string chooseContact(List<string> contacts)
+        private void chooseContact(List<string> contacts)
         {
-            Console.WriteLine("elige tu contacto");
+            Console.WriteLine("Elige tu contacto");
             foreach (string contact in contacts)
             {
                 Console.WriteLine(contact);
             }
-            string elegir = Console.ReadLine();
+            string chosen = Console.ReadLine();
             foreach (string contact in contacts)
             {
-                if (elegir == contact[0].ToString())
+                if (chosen == contact[0].ToString())
                 {
-                    return contact.Remove(0,1);
+                    nameContact = contact.Remove(0,1);
                 }
             }
-            return "El contacto no existe";
         }
-        private string Confirm(string data)
+        private bool Confirm()
         {
+            data = date.ToString("dd/MM/yyyy HH:mm") + " " + description + " " + nameContact;
             Console.WriteLine("¿Es correcta esta información? s/n");
             Console.WriteLine(data);
             string confirmed = Console.ReadLine();
@@ -79,11 +105,10 @@ namespace Agenda_con_Archivos.Models
             }
             if (confirmed != "s")
             {
-                Console.WriteLine("Volvamos a empezar");
-                data = Insertar();
-                Confirm(data);
+                Console.WriteLine("Operación cancelada");
+                return false;
             }
-            return data;
+            return true;
         }
         private void CreateFile()
         {
