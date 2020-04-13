@@ -17,7 +17,8 @@ namespace Agenda_con_Archivos
             switch(Console.ReadLine())
             {
                 case "1":
-                    //
+                    var date = new Recorder(new Date());
+                    date.Registrar();
                     break;
                 case "2":
                     var contact = new Recorder(new Contact());
