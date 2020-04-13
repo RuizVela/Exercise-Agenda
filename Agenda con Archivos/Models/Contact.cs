@@ -16,15 +16,19 @@ namespace Agenda_con_Archivos.Models
         private int phoneNumber;
         bool correctPhoneNumber = false;
         private string location;
+        string data;
         public void Registrar()
         {
             Insertar();
-            var confirmedData = Confirm();
+            if (!Confirm())
+            {
+                return;
+            }
             if (!File.Exists(path))
             {
                 CreateFile();
             }
-            AddRegistry(confirmedData);
+            AddRegistry(data);
             Console.WriteLine("Contacto agregado correctamente.");
             Console.ReadLine();
         }
@@ -75,9 +79,9 @@ namespace Agenda_con_Archivos.Models
         {
             File.AppendAllText(path, data + Environment.NewLine);
         }
-        private string Confirm()
+        private bool Confirm()
         {
-            var data = name + surname + phoneNumber.ToString() + location;
+            data = name +" "+ surname + " " + phoneNumber.ToString() + " " + location;
             Console.WriteLine("¿Es correcta esta información? s/n");
             Console.WriteLine(data);
             string confirmed = Console.ReadLine();
@@ -88,12 +92,10 @@ namespace Agenda_con_Archivos.Models
             }
             if (confirmed != "s")
             {
-                Console.WriteLine("Volvamos a empezar");
-                Insertar();
-                Confirm();
+                Console.WriteLine("Operación cancelada");
+                return false;
             }
-            return data;
-
+            return true;
         }
     }
 }
