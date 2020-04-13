@@ -6,7 +6,7 @@ namespace Agenda_con_Archivos
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             Console.WriteLine("\t1 - Añadir cita");
             Console.WriteLine("\t2 - Añadir contacto");
@@ -19,10 +19,12 @@ namespace Agenda_con_Archivos
                 case "1":
                     var date = new Recorder(new Date());
                     date.Registrar();
+                    Main();
                     break;
                 case "2":
                     var contact = new Recorder(new Contact());
                     contact.Registrar();
+                    Main();
                     break;
                 case "3":
                     //
