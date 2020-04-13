@@ -11,10 +11,15 @@ namespace Agenda_con_Archivos.Models
     public class Contact : IRecorder
     {
         private readonly string path = "Contactos.txt";
+        private string name;
+        private string surname;
+        private int phoneNumber;
+        bool correctPhoneNumber = false;
+        private string location;
         public void Registrar()
         {
-            var data = Insertar();
-            var confirmedData = Confirm(data);
+            Insertar();
+            var confirmedData = Confirm();
             if (!File.Exists(path))
             {
                 CreateFile();
@@ -23,19 +28,44 @@ namespace Agenda_con_Archivos.Models
             Console.WriteLine("Contacto agregado correctamente.");
             Console.ReadLine();
         }
-        private string Insertar()
+        private void Insertar()
         {
-            List<string> dataList = new List<string>();
-            Console.WriteLine("Inserte el nombre:");
-            dataList.Add(Console.ReadLine());
-            Console.WriteLine("Inserte los apellidos:");
-            dataList.Add(Console.ReadLine());
-            Console.WriteLine("Inserte el numero de telefono:");
-            dataList.Add(Console.ReadLine());
-            Console.WriteLine("Inserte la localidad:");
-            dataList.Add(Console.ReadLine());
-            string data = string.Join(" ", dataList);
-            return data;
+            InsertName();
+            InsertSurname();
+            InsertPhoneNumber();
+            InsertLocation();
+        }
+        private void InsertName()
+        {
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Inserte el nombre:");
+                name = Console.ReadLine();
+            }
+        }
+        private void InsertSurname()
+        {
+            while (string.IsNullOrEmpty(surname))
+            {
+                Console.WriteLine("Inserte los apellidos:");
+                surname = Console.ReadLine();
+            }
+        }
+        private void InsertPhoneNumber()
+        {
+            while(phoneNumber.ToString().Length !=9 || !correctPhoneNumber)
+            {
+                Console.WriteLine("Inserte el numero de telefono:");
+                correctPhoneNumber = Int32.TryParse(Console.ReadLine(), out phoneNumber);
+            }
+        }
+        private void InsertLocation()
+        {
+            while (string.IsNullOrEmpty(location))
+            {
+                Console.WriteLine("Inserte la localidad:");
+                location = Console.ReadLine();
+            }
         }
         private void CreateFile()
         {
@@ -45,8 +75,9 @@ namespace Agenda_con_Archivos.Models
         {
             File.AppendAllText(path, data + Environment.NewLine);
         }
-        private string Confirm(string data)
+        private string Confirm()
         {
+            var data = name + surname + phoneNumber.ToString() + location;
             Console.WriteLine("¿Es correcta esta información? s/n");
             Console.WriteLine(data);
             string confirmed = Console.ReadLine();
@@ -58,8 +89,8 @@ namespace Agenda_con_Archivos.Models
             if (confirmed != "s")
             {
                 Console.WriteLine("Volvamos a empezar");
-                data = Insertar();
-                Confirm(data);
+                Insertar();
+                Confirm();
             }
             return data;
 
