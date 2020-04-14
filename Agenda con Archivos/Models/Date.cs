@@ -38,8 +38,8 @@ namespace Agenda_con_Archivos.Models
         {
             while (!correctDate)
             {
-                Console.WriteLine("Inserte la fecha de la cita. Ejemplo: 21/05/2001");
-                correctDate = DateTime.TryParse(Console.ReadLine(), out date)   ;
+                Console.WriteLine("Inserte la fecha y hora de la cita. Ejemplo: 21/05/2001 17:30");
+                correctDate = DateTime.TryParse(Console.ReadLine(), out date);
             }
         }
         private void InsertDescription()
