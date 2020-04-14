@@ -27,17 +27,43 @@ namespace Agenda_con_Archivos
                     Main();
                     break;
                 case "3":
-                    //
+                    SelectSearcher();
+                    Main();
                     break;
                 case "4":
                     //
                     break;
                 case "0":
-                    //
+                    Environment.Exit(0);
                     break;
                default:
                     Console.WriteLine("Por favor ingrese un numero de la lista");
                     Main();
+                    break;
+            }
+        }
+        private static void SelectSearcher()
+        {
+            Console.WriteLine("\t1 - Consultar por fecha");
+            Console.WriteLine("\t2 - Consultar por contacto");
+            Console.WriteLine("\t0 - Volver al menú principal");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    var dateSearcher = new Searcher(new DateSearcher());
+                    dateSearcher.Search();
+                    SelectSearcher();
+                    break;
+                case "2":
+                    var contactSearcher = new Searcher(new ContactSearcher());
+                    contactSearcher.Search();
+                    break;
+                case "0":
+                    Main();
+                    break;
+                default:
+                    Console.WriteLine("Por favor ingrese un numero de la lista");
+                    SelectSearcher();
                     break;
             }
         }
