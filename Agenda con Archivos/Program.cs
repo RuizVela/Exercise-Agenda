@@ -57,6 +57,7 @@ namespace Agenda_con_Archivos
                 case "2":
                     var contactSearcher = new Searcher(new ContactSearcher());
                     contactSearcher.Search();
+                    SelectSearcher();
                     break;
                 case "0":
                     Main();
