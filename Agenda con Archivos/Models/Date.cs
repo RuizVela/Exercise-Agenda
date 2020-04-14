@@ -55,13 +55,15 @@ namespace Agenda_con_Archivos.Models
             while(string.IsNullOrEmpty(nameContact))
             {
                 Console.WriteLine("Inserte el nombre de su contacto:");
-                searchContact(Console.ReadLine());
+                SearchContact(Console.ReadLine());
             }
         }
-        private void searchContact(string name)
+        private void SearchContact(string name)
         {
-            var allContacts = File.ReadAllLines("Contactos.txt");
             List<string> similarContacts = new List<string>();
+            try
+            {
+            var allContacts = File.ReadAllLines("Contactos.txt");
             int count = 0;
             foreach(string contact in allContacts)
             {
@@ -71,16 +73,24 @@ namespace Agenda_con_Archivos.Models
                     similarContacts.Add(count.ToString()+" "+contact);
                 }
             }
-            chooseContact(similarContacts);
+            }
+            catch(Exception)
+            {
+                //La excepción no impide que el programa siga funcionando.
+            }
+            finally 
+            {
+                ChooseContact(similarContacts);
+            }
         }
-        private void chooseContact(List<string> contacts)
+        private void ChooseContact(List<string> contacts)
         {
             if (contacts.Count == 0)
             {
                 Console.WriteLine("No existen contactos con ese nombre, ingrese su contacto:");
                 var Contact = new Contact();
                 Contact.Registrar();
-                searchContact(Contact.name);
+                SearchContact(Contact.name);
                 return;
             }
             Console.WriteLine("Elige tu contacto");
@@ -103,7 +113,7 @@ namespace Agenda_con_Archivos.Models
                 Console.WriteLine("Ingrese su contacto:");
                 var Contact = new Contact();
                 Contact.Registrar();
-                searchContact(Contact.name);
+                SearchContact(Contact.name);
             }
         }
         private bool Confirm()
