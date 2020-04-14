@@ -30,7 +30,7 @@ namespace Agenda_con_Archivos.Models
             try
             {
                 int count = 0;
-                var allDates = File.ReadAllLines("Agenda.txt");
+                var allDates = File.ReadAllLines("Contactos.txt");
                 foreach (string date in allDates)
                 {
                     if (date.Contains(name))
