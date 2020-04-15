@@ -32,6 +32,7 @@ namespace Agenda_con_Archivos
                     break;
                 case "4":
                     //
+                    Main();
                     break;
                 case "0":
                     Environment.Exit(0);

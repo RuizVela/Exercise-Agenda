@@ -7,63 +7,62 @@ namespace Agenda_con_Archivos.Models
 {
     public class ContactSearcher : ISearcher
     {
-            string nameContact;
-
+        readonly string[] allContacts = File.ReadAllLines("Contactos.txt");
+        string contactName;
+        readonly List<string> contactList = new List<string>();
         public void Search()
         {
-            InsertContact();
+            InsertContact(); 
+            SearchContact();
+            ChooseContact();
             Console.ReadLine();
         }
         private void InsertContact()
         {
+            string nameContact = null;
             while (string.IsNullOrEmpty(nameContact))
             {
                 Console.WriteLine("Inserte el nombre de su contacto:");
                 nameContact = Console.ReadLine();
             }
-                SearchContact(nameContact);
+            contactName = nameContact;
         }
-        private void SearchContact(string name)
+        private void SearchContact()
         {
-            
-            List<string> dates = new List<string>();
             try
             {
-                int count = 0;
-                var allDates = File.ReadAllLines("Contactos.txt");
-                foreach (string date in allDates)
+                int id = 0;
+                foreach (string contact in allContacts)
                 {
-                    if (date.Contains(name))
+                    if (contact.Contains(contactName))
                     {
-                        count++;
-                        dates.Add(count.ToString() + " " + date);
+                        id++;
+                        string contactWithId = id.ToString() + " " + contact;
+                        Console.WriteLine(contactWithId);
+                        contactList.Add(contactWithId);
                     }
                 }
+                if (contactList.Count == 0)
+                {
+                    Console.WriteLine("No existen contactos con ese nombre");
+                    return;
+                }
+                Console.WriteLine("0 Mi contacto no está en la lista");
             }
             catch (Exception)
             {
-                //La excepción no impide que el programa siga funcionando.
-            }
-            finally
-            {
-                ChooseContact(dates);
+                Console.WriteLine("No existe un archivo de contactos.");
             }
         }
-        private void ChooseContact(List<string> contacts)
+        private void ChooseContact()
         {
-            if (contacts.Count == 0)
+            if (contactList.Count == 0)
             {
-                Console.WriteLine("No existen contactos con ese nombre");
                 return;
             }
             Console.WriteLine("Elige tu contacto");
-            foreach (string contact in contacts)
-            {
-                Console.WriteLine(contact);
-            }
-            Console.WriteLine("0 Mi contacto no está en la lista");
             string chosen = Console.ReadLine();
-            foreach (string contact in contacts)
+            foreach (string contact in contactList)
             {
                 bool dateExists = false;
                 try
