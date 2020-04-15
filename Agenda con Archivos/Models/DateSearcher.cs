@@ -37,17 +37,14 @@ namespace Agenda_con_Archivos.Models
                     dateExists = true;
                     }
                 }
+                if (!dateExists)
+                {
+                    Console.WriteLine("No existen citas para ese día.");
+                }
             }
             catch (Exception)
             {
                 //La excepción no impide que el programa siga funcionando.
-            }
-            finally
-            {
-                if (!dateExists)
-            {
-                Console.WriteLine("No existen citas para ese día.");
-            }
             }
         }
     }
