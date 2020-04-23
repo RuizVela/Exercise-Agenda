@@ -1,6 +1,7 @@
 ﻿using Agenda_con_Archivos.Implementations;
 using Agenda_con_Archivos.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Agenda_con_Archivos
 {
@@ -17,13 +18,17 @@ namespace Agenda_con_Archivos
             switch(Console.ReadLine())
             {
                 case "1":
-                    var date = new Recorder(new Date());
-                    date.Registrar();
+                    // date = new FileManager(new AppointmentManager());
+                    //date.Register();
                     Main();
                     break;
                 case "2":
-                    var contact = new Recorder(new Contact());
-                    contact.Registrar();
+                    var contact = new FileManager(new ContactManager());
+                    var data = contact.InsertData();
+                    if (!contact.Confirm(data))
+                    {
+                        contact.Register(data);
+                    }
                     Main();
                     break;
                 case "3":
@@ -51,13 +56,13 @@ namespace Agenda_con_Archivos
             switch (Console.ReadLine())
             {
                 case "1":
-                    var dateSearcher = new Searcher(new DateSearcher());
-                    dateSearcher.Search();
+                   // var dateSearcher = new Searcher(new DateSearcher());
+                    //dateSearcher.Search();
                     SelectSearcher();
                     break;
                 case "2":
-                    var contactSearcher = new Searcher(new ContactSearcher());
-                    contactSearcher.Search();
+                    //var contactSearcher = new Searcher(new ContactSearcher());
+                    //contactSearcher.Search();
                     SelectSearcher();
                     break;
                 case "0":

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Agenda_con_Archivos.Models
 {
-    public class DateSearcher : ISearcher
+    public class DateSearcher
     {
         public void Search()
         {

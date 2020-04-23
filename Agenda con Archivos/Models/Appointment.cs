@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Agenda_con_Archivos.Models
 {
-    public class Date : IRecorder
+    public class Appointment
     {
         private readonly string path = "Agenda.txt";
         private DateTime date;

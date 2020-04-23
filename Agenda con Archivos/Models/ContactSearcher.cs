@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Agenda_con_Archivos.Models
 {
-    public class ContactSearcher : ISearcher
+    public class ContactSearcher
     {
         readonly string[] allContacts = File.ReadAllLines("Contactos.txt");
         string contactName;
