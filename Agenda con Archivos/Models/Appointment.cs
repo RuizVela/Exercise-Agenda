@@ -89,7 +89,7 @@ namespace Agenda_con_Archivos.Models
                 Console.WriteLine("No existen contactos con ese nombre, ingrese su contacto:");
                 var Contact = new Contact();
                 //Contact.Register();
-                SearchContact(Contact.name);
+                SearchContact(Contact.Name);
                 return;
             }
             Console.WriteLine("Elige tu contacto");
@@ -112,7 +112,7 @@ namespace Agenda_con_Archivos.Models
                 Console.WriteLine("Ingrese su contacto:");
                 var Contact = new Contact();
                 //Contact.Register();
-                SearchContact(Contact.name);
+                SearchContact(Contact.Name);
             }
         }
         private bool Confirm()

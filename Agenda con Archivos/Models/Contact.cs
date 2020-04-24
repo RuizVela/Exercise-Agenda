@@ -2,10 +2,10 @@
 {
     public class Contact
     {
-        public int id;
-        public string name;
-        public string surname;
-        public int phoneNumber;
-        public string location;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int PhoneNumber { get; set; }
+        public string Location { get; set; }
     }
 }

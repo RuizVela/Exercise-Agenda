@@ -13,17 +13,16 @@ namespace Agenda_con_Archivos.Models
         public Dictionary<string, string> data { get; } = new Dictionary<string, string>();
         public Contact Register(Dictionary<string, string> data)
         {
-
-            setId();
+            SetId();
             Contact contact = new Contact()
             {
-                id = int.Parse(data["id"]),
-                name = data["name"],
-                surname = data["surname"],
-                phoneNumber = int.Parse(data["phoneNumber"]),
-                location = data["location"],
+                Id = int.Parse(data["id"]),
+                Name = data["name"],
+                Surname = data["surname"],
+                PhoneNumber = int.Parse(data["phoneNumber"]),
+                Location = data["location"],
             };
-            var dataString = contact.id.ToString() + " " + contact.name + " " + contact.surname + " " + contact.phoneNumber.ToString() + " " + contact.location;
+            var dataString = contact.Id.ToString() + " " + contact.Name + " " + contact.Surname + " " + contact.PhoneNumber.ToString() + " " + contact.Location;
             File.AppendAllText(path, dataString + Environment.NewLine);
             return contact;
         }
@@ -35,7 +34,7 @@ namespace Agenda_con_Archivos.Models
             InsertLocation();
             return data;
         }
-        public int setId()
+        public int SetId()
         {
             if (!File.Exists(path)) { File.CreateText(path).Close(); }
             var id = File.ReadLines(path).Count();

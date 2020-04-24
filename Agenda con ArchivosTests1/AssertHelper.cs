@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Agenda_con_ArchivosTests1
 {
-    public class AssertHelper
+    public static class AssertHelper
     {
         public static void HasEqualFieldValues<T>(T expected, T actual)
         {

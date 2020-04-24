@@ -23,16 +23,16 @@ namespace Agenda_con_Archivos.Models.Tests
             var location = "location";
             var expected = new Contact()
             {
-                id = id,
-                name = name,
-                surname = surname,
-                phoneNumber = phoneNumber,
-                location = location,
+                Id = id,
+                Name = name,
+                Surname = surname,
+                PhoneNumber = phoneNumber,
+                Location = location,
             };
             ContactManager manager = new ContactManager();
             Dictionary<string, string> data = new Dictionary<string, string>
             {
-                {"id", manager.setId().ToString() },
+                {"id", manager.SetId().ToString() },
                 {"name", name },
                 {"surname", surname },
                 {"phoneNumber", phoneNumber.ToString() },
@@ -51,16 +51,16 @@ namespace Agenda_con_Archivos.Models.Tests
             var location = "location";
             var expected = new Contact()
             {
-                id = id,
-                name = name,
-                surname = surname,
-                phoneNumber = phoneNumber,
-                location = location,
+                Id = id,
+                Name = name,
+                Surname = surname,
+                PhoneNumber = phoneNumber,
+                Location = location,
             };
             ContactManager manager = new ContactManager();
             Dictionary<string, string> dataFirst = new Dictionary<string, string>
             {
-                {"id", manager.setId().ToString() },
+                {"id", manager.SetId().ToString() },
                 {"name", name },
                 {"surname", surname },
                 {"phoneNumber", phoneNumber.ToString() },
@@ -69,7 +69,7 @@ namespace Agenda_con_Archivos.Models.Tests
             manager.Register(dataFirst); 
             Dictionary<string, string> dataSecond = new Dictionary<string, string>
             {
-                {"id", manager.setId().ToString() },
+                {"id", manager.SetId().ToString() },
                 {"name", name },
                 {"surname", surname },
                 {"phoneNumber", phoneNumber.ToString() },
