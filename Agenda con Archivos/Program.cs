@@ -25,7 +25,7 @@ namespace Agenda_con_Archivos
                 case "2":
                     var contact = new FileManager(new ContactManager());
                     var data = contact.InsertData();
-                    if (!contact.Confirm(data))
+                    if (contact.Confirm(data))
                     {
                         contact.Register(data);
                     }
