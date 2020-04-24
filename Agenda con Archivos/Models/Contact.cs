@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace Agenda_con_Archivos.Models
+﻿namespace Agenda_con_Archivos.Models
 {
     public class Contact
     {

@@ -1,5 +1,4 @@
-﻿using Agenda_con_Archivos.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -89,7 +88,7 @@ namespace Agenda_con_Archivos.Models
             {
                 Console.WriteLine("No existen contactos con ese nombre, ingrese su contacto:");
                 var Contact = new Contact();
-                Contact.Registrar();
+                //Contact.Register();
                 SearchContact(Contact.name);
                 return;
             }
@@ -112,7 +111,7 @@ namespace Agenda_con_Archivos.Models
             {
                 Console.WriteLine("Ingrese su contacto:");
                 var Contact = new Contact();
-                Contact.Registrar();
+                //Contact.Register();
                 SearchContact(Contact.name);
             }
         }
