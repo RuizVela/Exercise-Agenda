@@ -9,7 +9,7 @@ namespace Agenda_con_Archivos.Models
 {
     public class ContactManager : IManager
     {
-        public string path { get; } = "Contactos.txt";
+        public string path { get; } = Properties.Settings.Default.ContactsPath;
 
         public Dictionary<string, string> data { get; } = new Dictionary<string, string>();
         public Contact Register(Dictionary<string, string> data)
