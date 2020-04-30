@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Agenda_con_Archivos.Models
 {
@@ -79,11 +80,13 @@ namespace Agenda_con_Archivos.Models
         }
         public bool Confirm(Dictionary<string, string> data)
         {
-            string dataString ="";
+            string dataString;
+            var dataStringBuilder = new StringBuilder();
             foreach (KeyValuePair<string, string> entry in data)
             {
-                dataString += entry.Value + " ";
+                dataStringBuilder.AppendFormat("{0} ", entry.Value);
             }
+            dataString = dataStringBuilder.ToString();
             Console.WriteLine("¿Es correcta esta información? s/n");
             Console.WriteLine(dataString);
             string confirmed = Console.ReadLine();
