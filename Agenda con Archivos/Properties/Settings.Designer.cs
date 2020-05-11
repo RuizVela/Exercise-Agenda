@@ -31,5 +31,14 @@ namespace Agenda_con_Archivos.Properties {
                 return ((string)(this["ContactsPath"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Agenda.txt")]
+        public string SchedulePath {
+            get {
+                return ((string)(this["SchedulePath"]));
+            }
+        }
     }
 }

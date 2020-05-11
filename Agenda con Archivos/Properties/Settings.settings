@@ -5,5 +5,8 @@
     <Setting Name="ContactsPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Contactos.txt</Value>
     </Setting>
+    <Setting Name="SchedulePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Agenda.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

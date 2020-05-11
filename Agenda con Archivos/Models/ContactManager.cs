@@ -12,7 +12,7 @@ namespace Agenda_con_Archivos.Models
         public string path { get; } = Properties.Settings.Default.ContactsPath;
 
         public Dictionary<string, string> data { get; } = new Dictionary<string, string>();
-        public Contact Register(Dictionary<string, string> data)
+        public bool Register(Dictionary<string, string> data)
         {
             SetId();
             Contact contact = new Contact()
@@ -25,7 +25,7 @@ namespace Agenda_con_Archivos.Models
             };
             var dataString = contact.Id.ToString() + " " + contact.Name + " " + contact.Surname + " " + contact.PhoneNumber.ToString() + " " + contact.Location;
             File.AppendAllText(path, dataString + Environment.NewLine);
-            return contact;
+            return true;
         }
         public Dictionary<string, string> InsertData()
         {
@@ -102,7 +102,7 @@ namespace Agenda_con_Archivos.Models
             }
             return true;
         }
-        public Contact Search()
+        public bool Search()
         {
             throw new NotImplementedException();
         }

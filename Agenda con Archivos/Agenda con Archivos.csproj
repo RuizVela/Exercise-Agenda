@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\FileManager.cs" />
+    <Compile Include="Models\AppointmentManager.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactManager.cs" />
     <Compile Include="Models\ContactSearcher.cs" />
