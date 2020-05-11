@@ -6,15 +6,14 @@ namespace Agenda_con_Archivos.Models
 {
     public class Appointment
     {
+        public int Id { get; set; }
+        public DateTime Date { get;  set; }
         private readonly string path = "Agenda.txt";
-        private DateTime date;
-        bool correctDate = false;
-        private string description;
-        private string nameContact;
+        public string Description { get; set; }
+        public string Contact { get; set; }
         private string data;
         public void Registrar()
         {
-            Insertar();
             if(!Confirm())
             {
                 return;
@@ -27,61 +26,7 @@ namespace Agenda_con_Archivos.Models
             Console.WriteLine("Cita creada correctamente");
             Console.ReadLine();
         }
-        private void Insertar()
-        {
-            InsertDate();
-            InsertDescription();
-            InsertContact();
-        }
-        private void InsertDate()
-        {
-            while (!correctDate)
-            {
-                Console.WriteLine("Inserte la fecha y hora de la cita. Ejemplo: 21/05/2001 17:30");
-                correctDate = DateTime.TryParse(Console.ReadLine(), out date);
-            }
-        }
-        private void InsertDescription()
-        {
-            while(string.IsNullOrEmpty(description))
-            {
-                Console.WriteLine("Inserte el motivo de la cita:");
-                description = Console.ReadLine();
-            }
-        }
-        private void InsertContact()
-        {
-            while(string.IsNullOrEmpty(nameContact))
-            {
-                Console.WriteLine("Inserte el nombre de su contacto:");
-                SearchContact(Console.ReadLine());
-            }
-        }
-        private void SearchContact(string name)
-        {
-            List<string> similarContacts = new List<string>();
-            try
-            {
-            var allContacts = File.ReadAllLines("Contactos.txt");
-            int count = 0;
-            foreach(string contact in allContacts)
-            {
-                if (contact.Contains(name))
-                {
-                    count++;
-                    similarContacts.Add(count.ToString()+" "+contact);
-                }
-            }
-            }
-            catch(Exception)
-            {
-                //La excepción no impide que el programa siga funcionando.
-            }
-            finally 
-            {
-                ChooseContact(similarContacts);
-            }
-        }
+ 
         private void ChooseContact(List<string> contacts)
         {
             if (contacts.Count == 0)
@@ -89,7 +34,7 @@ namespace Agenda_con_Archivos.Models
                 Console.WriteLine("No existen contactos con ese nombre, ingrese su contacto:");
                 var Contact = new Contact();
                 //Contact.Register();
-                SearchContact(Contact.Name);
+                //SearchContact(Contact.Name);
                 return;
             }
             Console.WriteLine("Elige tu contacto");
@@ -103,7 +48,7 @@ namespace Agenda_con_Archivos.Models
             {
                 if (chosen == contact[0].ToString())
                 {
-                    nameContact = contact.Remove(0,1);
+                    Contact = contact.Remove(0,1);
                     return;
                 }
             }
@@ -112,12 +57,12 @@ namespace Agenda_con_Archivos.Models
                 Console.WriteLine("Ingrese su contacto:");
                 var Contact = new Contact();
                 //Contact.Register();
-                SearchContact(Contact.Name);
+               // SearchContact(Contact.Name);
             }
         }
         private bool Confirm()
         {
-            data = date.ToString("dd/MM/yyyy HH:mm") + " " + description + " " + nameContact;
+            data = Date.ToString("dd/MM/yyyy HH:mm") + " " + Description + " " + Contact;
             Console.WriteLine("¿Es correcta esta información? s/n");
             Console.WriteLine(data);
             string confirmed = Console.ReadLine();
